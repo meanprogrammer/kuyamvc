@@ -9,19 +9,30 @@ namespace KuyaTest.Models
     public class ProgrammingModel
     {
         [Required]
-        public string SelectedProgrammingLanguage { get; set; }
-        public List<string> ProgrammingLanguages { get { return languages; } set { languages = value; } }
+        public int SelectedProgrammingLanguage { get; set; }
+        public List<ProgrammingLanguage> ProgrammingLanguages { get { return languages; } set { languages = value; } }
 
-        private List<string> languages = initializeLanguages();
+        private List<ProgrammingLanguage> languages = initializeLanguages();
 
-        private static List<string> initializeLanguages()
+        private static List<ProgrammingLanguage> initializeLanguages()
         {
-            List<string> l = new List<string>();
-            l.Add("Python");
-            l.Add("Ruby");
-            l.Add("C#");
-            l.Add("Java");
+            List<ProgrammingLanguage> l = new List<ProgrammingLanguage>();
+            l.Add(new ProgrammingLanguage(1, "Python"));
+            l.Add(new ProgrammingLanguage(2, "Ruby"));
+            l.Add(new ProgrammingLanguage(3, "C#"));
+            l.Add(new ProgrammingLanguage(4, "Java"));
             return l;
         }
+    }
+
+    public class ProgrammingLanguage
+    {
+        public ProgrammingLanguage(int id, string name)
+        {
+            this.ProgrammingLanguageID = id;
+            this.ProgrammingLanguageName = name;
+        }
+        public int  ProgrammingLanguageID { get; set; }
+        public string ProgrammingLanguageName { get; set; }
     }
 }
